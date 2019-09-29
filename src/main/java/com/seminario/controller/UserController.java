@@ -1,21 +1,26 @@
 package com.seminario.controller;
 
-import com.seminario.model.UserDTO;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.seminario.dto.UserDTO;
+import com.seminario.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public UserDTO test() {
-        return new UserDTO("Hola", "Mundo 2");
+    @Autowired
+    private UserService userService;
+
+    @GetMapping(value = "/user")
+    public List<UserDTO> allUsers() {
+        return userService.allUsers();
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public UserDTO test2() {
-        return new UserDTO("nombre", "nickname");
+    @PostMapping(value = "/user")
+    public UserDTO saveUser(@RequestBody UserDTO user) {
+        return userService.save(user);
     }
 
 }

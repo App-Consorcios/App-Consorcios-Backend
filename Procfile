@@ -1,1 +1,1 @@
-web: java -jar target/consorcios-1.0-SNAPSHOT.jar
+web: java $JAVA_OPTS -jar target/consorcios-1.0-SNAPSHOT.jar -Dserver.port=$PORT $JAR_OPTS

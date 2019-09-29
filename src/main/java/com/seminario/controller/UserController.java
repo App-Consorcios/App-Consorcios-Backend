@@ -10,7 +10,7 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public UserDTO test() {
-        return new UserDTO("Hola", "Mundo");
+        return new UserDTO("Hola", "Mundo 2");
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)

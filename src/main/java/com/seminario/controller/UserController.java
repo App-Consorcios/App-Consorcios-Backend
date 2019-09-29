@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public UserDTO test() {
+        return new UserDTO("Hola", "Mundo");
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public UserDTO test2() {
         return new UserDTO("nombre", "nickname");
     }
 

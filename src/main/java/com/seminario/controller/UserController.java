@@ -13,14 +13,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/user")
-    public List<UserDTO> allUsers() {
-        return userService.allUsers();
-    }
-
     @PostMapping(value = "/user")
     public UserDTO saveUser(@RequestBody UserDTO user) {
         return userService.save(user);
+    }
+
+    @GetMapping(value = "/user")
+    public List<UserDTO> getUsers() {
+        //TODO: Add query string filters
+        return userService.allUsers();
+    }
+
+    @GetMapping(value = "/login")
+    public Boolean allUsers(@RequestParam("mail") String mail, @RequestParam("password") String password) {
+        return userService.isValidCredential(mail, password);
     }
 
 }

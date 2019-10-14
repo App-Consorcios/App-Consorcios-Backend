@@ -34,6 +34,7 @@ heroku logs --tail -a app-consorcios-backend
 
 ### POST /usuario
 
+Request
 ```
 {
   "nombre": "Jorge",
@@ -49,10 +50,9 @@ heroku logs --tail -a app-consorcios-backend
 ```
 ---
 
-### GET /usuario
+### GET /usuarios
 
-Lista todos los usuarios
-
+Response
 ```
 [
     {
@@ -77,6 +77,7 @@ Lista todos los usuarios
 
 /login?mail=rodriguez@admin.com&password=admin123
 
+Response
 ```
 {
     "valido": true,
@@ -96,6 +97,7 @@ Lista todos los usuarios
 
 /login?mail=falso@admin.com&password=admin123
 
+Response
 ```
 {
     "valido": false
@@ -204,6 +206,7 @@ Deben cumplir el formato de `yyyy-MM`
 
 /expensas?periodo=2019-10
 
+Response
 ```
 [
     {
@@ -224,6 +227,7 @@ Deben cumplir el formato de `yyyy-MM`
 
 /expensas?fromPeriodo=2019-09&toPeriodo=2019-12
 
+Response
 ```
 [
     {

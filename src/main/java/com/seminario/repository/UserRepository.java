@@ -1,9 +1,9 @@
 package com.seminario.repository;
 
-import com.seminario.entity.AppUser;
+import com.seminario.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<AppUser, Long> {
+public interface UserRepository extends JpaRepository<Usuario, Long> {
 
-    AppUser findByMailAndPassword(String mail, String password);
+    Usuario findByMailAndPassword(String mail, String password);
 }

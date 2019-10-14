@@ -1,24 +1,29 @@
 package com.seminario.entity;
 
+import com.seminario.dto.TipoConceptoDTO;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Rol {
+public class TipoConcepto {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "nombre", unique = true, nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @ManyToMany(mappedBy = "roles")
-    private List<Usuario> usuarios = new ArrayList<>();
+    @Column(name = "color", nullable = false)
+    private String color;
 
-    public Rol() {
+    public TipoConcepto() {
+    }
+
+    public TipoConcepto(TipoConceptoDTO dto) {
+        this.nombre = dto.getNombre();
+        this.color = dto.getColor();
     }
 
     public long getId() {
@@ -37,11 +42,11 @@ public class Rol {
         this.nombre = nombre;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public String getColor() {
+        return color;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setColor(String color) {
+        this.color = color;
     }
 }

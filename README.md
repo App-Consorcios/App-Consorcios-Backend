@@ -6,7 +6,7 @@ Consorcios API Rest
 mvn spring-boot:run
 ```
 
-Luego http://localhost:8081/appUser
+Luego http://localhost:8081/usuario
 
 Si desean cambiar el puerto, pueden editar el application.properties
 
@@ -30,9 +30,26 @@ heroku logs --tail -a app-consorcios-backend
 
 # API
 
-## Users
+## Usuarios
 
-GET /user
+### POST /usuario
+
+```
+{
+  "nombre": "Jorge",
+  "apellido": "Rodriguez",
+  "password": "admin123",
+  "mail": "rodriguez@admin.com",
+  "roles": [
+    {
+      "nombre": "admin"
+    }
+  ]
+}
+```
+---
+
+### GET /usuario
 
 Lista todos los usuarios
 
@@ -50,93 +67,186 @@ Lista todos los usuarios
 
 ---
 
-GET /login?mail={mail}&password={password}
+### GET /login?mail={mail}&password={password}
 
-Devuelve un boolean indicando si el mail, corresponde con la contraseña.
+#### Ejemplos
 
-## Expensas
+/login?mail=rodriguez@admin.com&password=admin123
 
-POST /expense
+```
+{
+    "valido": true,
+    "usuario": {
+        "id": 1,
+        "nombre": "Jorge",
+        "apellido": "Rodriguez",
+        "mail": "rodriguez@admin.com",
+        "roles": [
+            {
+                "nombre": "admin"
+            }
+        ]
+    }
+}
+```
+
+/login?mail=falso@admin.com&password=admin123
+
+```
+{
+    "valido": false
+}
+```
+
+## Conceptos
+
+### POST /conceptos/tipo
 
 Request
 ```
 {
-  "periodo": "2019-11",
-  "cargasSociales": "24.4",
-  "abonosServicios": "213.4",
-  "reparaciionesEdificio": "345.45",
-  "serviciosPublicos": "234.442",
-  "gastosAdministrativos": "56.4",
-  "gastosMantenimiento": "73.86"
-}
-```
-
-Response 
-```
-{
-    "id": 2,
-    "periodo": "2019-11",
-    "cargasSociales": 24.4,
-    "abonosServicios": 213.4,
-    "reparacionesEdificio": 0.0,
-    "serviciosPublicos": 234.442,
-    "gastosAdministrativos": 56.4,
-    "gastosMantenimiento": 73.86
+	"nombre": "Generales",
+	"color": "Rojo"
 }
 ```
 ---
 
-GET /expense
+### GET /conceptos/tipos
+
+Response 
+```
+[
+    {
+        "nombre": "Generales",
+        "color": "Rojo"
+    },
+    {
+        "nombre": "Misc",
+        "color": "Azul"
+    }
+]
+```
+---
+
+### POST /concepto
+
+Request
+```
+{
+	"nombre": "Gasto Administrativo",
+	"tipoConcepto": {
+		"nombre": "General"
+	}
+}
+
+```
+---
+
+### GET /conceptos
+
+Response 
+```
+[
+    {
+        "nombre": "Gasto Administrativo",
+        "tipoConcepto": {
+            "nombre": "General",
+            "color": "Rojo"
+        }
+    },
+    {
+        "nombre": "Gasto Mantenimiento",
+        "tipoConcepto": {
+            "nombre": "General",
+            "color": "Rojo"
+        }
+    }
+]
+```
+---
+
+## Expensas
+
+### POST /expensa
+
+Request
+```
+{
+  "periodo": "2019-10",
+  "items": [
+    {
+      "conceptoNombre": "Gasto Administrativo",
+      "monto": "180"
+    },
+    {
+      "conceptoNombre": "Gasto Mantenimiento",
+      "monto": "186.4"
+    }
+  ]
+}
+```
+---
+
+### GET /expensas
 
 QueryParams
-* fromPeriod
-* toPeriod
-* period
+* fromPeriodo
+* toPeriodo
+* periodo
 
 Deben cumplir el formato de `yyyy-MM`
 
 #### Ejemplos
 
-/expense?period=2019-10
+/expensas?periodo=2019-10
 
 ```
 [
     {
-        "id": 1,
         "periodo": "2019-10",
-        "cargasSociales": 24.4,
-        "abonosServicios": 552.4,
-        "reparacionesEdificio": 0.0,
-        "serviciosPublicos": 245.442,
-        "gastosAdministrativos": 6134.4,
-        "gastosMantenimiento": 73.86
+        "items": [
+            {
+                "conceptoNombre": "Gasto Administrativo",
+                "monto": 180.0
+            },
+            {
+                "conceptoNombre": "Gasto Mantenimiento",
+                "monto": 186.4
+            }
+        ]
     }
 ]
 ```
 
-/expense?fromPeriod=2019-09&toPeriod=2019-12
+/expensas?fromPeriodo=2019-09&toPeriodo=2019-12
 
 ```
 [
     {
-        "id": 1,
         "periodo": "2019-10",
-        "cargasSociales": 24.4,
-        "abonosServicios": 552.4,
-        "reparacionesEdificio": 0.0,
-        "serviciosPublicos": 245.442,
-        "gastosAdministrativos": 6134.4,
-        "gastosMantenimiento": 73.86
+        "items": [
+            {
+                "conceptoNombre": "Gasto Administrativo",
+                "monto": 180.0
+            },
+            {
+                "conceptoNombre": "Gasto Mantenimiento",
+                "monto": 186.4
+            }
+        ]
     },
     {
-        "id": 2,
         "periodo": "2019-11",
-        "cargasSociales": 24.4,
-        "abonosServicios": 213.4,
-        "reparacionesEdificio": 0.0,
-        "serviciosPublicos": 234.442,
-        "gastosAdministrativos": 56.4,
-        "gastosMantenimiento": 73.86
+        "items": [
+            {
+                "conceptoNombre": "Gasto Administrativo",
+                "monto": 294.0
+            },
+            {
+                "conceptoNombre": "Gasto Mantenimiento",
+                "monto": 2523.43
+            }
+        ]
     }
 ]
 ```

@@ -57,10 +57,14 @@ Lista todos los usuarios
 [
     {
         "id": 1,
-        "name": "Jorge",
-        "lastname": "Rodriguez",
+        "nombre": "Jorge",
+        "apellido": "Rodriguez",
         "mail": "rodriguez@admin.com",
-        "phone": "12345678"
+        "roles": [
+            {
+                "nombre": "admin"
+            }
+        ]
     }
 ]
 ```

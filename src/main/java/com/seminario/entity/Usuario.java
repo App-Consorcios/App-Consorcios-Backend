@@ -27,7 +27,6 @@ public class Usuario {
     private String mail;
 
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinTable(name = "usuario_rol",

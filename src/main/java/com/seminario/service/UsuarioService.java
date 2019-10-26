@@ -2,9 +2,11 @@ package com.seminario.service;
 
 
 import com.seminario.dto.LoginDTO;
+import com.seminario.dto.RolDTO;
 import com.seminario.dto.UsuarioDTO;
 import com.seminario.entity.Rol;
 import com.seminario.entity.Usuario;
+import com.seminario.repository.RolRepository;
 import com.seminario.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,12 +21,14 @@ public class UsuarioService {
     @Autowired
     private UserRepository userRepository;
 
-    public UsuarioDTO save(UsuarioDTO dto) {
+    @Autowired
+    private RolRepository rolRepository;
+
+    public UsuarioDTO saveUser(UsuarioDTO dto) {
         Usuario usuario = new Usuario(dto);
 
         List<Rol> roles = dto.getRoles().stream().map(rolDTO -> {
-           Rol rol = new Rol();
-           rol.setNombre(rolDTO.getNombre());
+            Rol rol = rolRepository.findByNombre(rolDTO.getNombre());
             List<Usuario> usuarios = new ArrayList<>();
             usuarios.add(usuario);
             rol.setUsuarios(usuarios);
@@ -45,4 +49,5 @@ public class UsuarioService {
         Usuario user = userRepository.findByMailAndPassword(mail, password);
         return new LoginDTO(user);
     }
+
 }

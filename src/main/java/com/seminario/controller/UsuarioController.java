@@ -16,7 +16,7 @@ public class UsuarioController {
 
     @PostMapping(value = "/usuario")
     public UsuarioDTO saveUsuario(@RequestBody UsuarioDTO usuarioDTO) {
-        return usuarioService.save(usuarioDTO);
+        return usuarioService.saveUser(usuarioDTO);
     }
 
     @GetMapping(value = "/usuarios")
@@ -25,7 +25,7 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/login")
-    public LoginDTO allUsers(@RequestParam("mail") String mail, @RequestParam("password") String password) {
+    public LoginDTO validateLogin(@RequestParam("mail") String mail, @RequestParam("password") String password) {
         return usuarioService.isValidCredential(mail, password);
     }
 }

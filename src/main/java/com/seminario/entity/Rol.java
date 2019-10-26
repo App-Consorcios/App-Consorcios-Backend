@@ -1,5 +1,7 @@
 package com.seminario.entity;
 
+import com.seminario.dto.RolDTO;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,10 @@ public class Rol {
     private List<Usuario> usuarios = new ArrayList<>();
 
     public Rol() {
+    }
+
+    public Rol(RolDTO dto) {
+        this.nombre = dto.getNombre();
     }
 
     public long getId() {

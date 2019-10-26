@@ -30,6 +30,34 @@ heroku logs --tail -a app-consorcios-backend
 
 # API
 
+## Roles
+
+### POST /rol
+
+Request
+```
+{
+  "nombre": "admin",
+}
+```
+---
+
+### GET /roles
+
+Response
+```
+[
+    {
+        "nombre": "admin"
+    },
+    {
+        "nombre": "alquilino"
+    }
+]
+```
+
+---
+
 ## Usuarios
 
 ### POST /usuario

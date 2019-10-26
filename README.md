@@ -37,7 +37,7 @@ heroku logs --tail -a app-consorcios-backend
 Request
 ```
 {
-  "nombre": "admin",
+  "nombre": "admin"
 }
 ```
 ---

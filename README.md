@@ -10,6 +10,10 @@ Luego http://localhost:8081/usuario
 
 Si desean cambiar el puerto, pueden editar el application.properties
 
+# Postman
+
+https://www.getpostman.com/collections/bc53ce0b99d572c2a3c4
+
 # Heroku
 
 La API se encuentra hosteada en

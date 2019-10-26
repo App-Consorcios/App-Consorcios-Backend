@@ -1,8 +1,10 @@
 package com.seminario.entity;
 
 import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,8 +15,10 @@ public class ExpensaGeneral {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "periodo", nullable = false)
-    private LocalDate periodo;
+    private Date periodo;
 
     @OneToMany(mappedBy = "expensaGeneral", cascade = CascadeType.ALL)
     private List<ItemExpensa> items;
@@ -31,11 +35,11 @@ public class ExpensaGeneral {
     }
 
     public LocalDate getPeriodo() {
-        return periodo;
+        return new LocalDate(this.periodo);
     }
 
     public void setPeriodo(LocalDate periodo) {
-        this.periodo = periodo;
+        this.periodo = periodo.toDate();
     }
 
     public List<ItemExpensa> getItems() {

@@ -10,9 +10,7 @@ import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -44,14 +42,14 @@ public class ExpensaService {
         return dto;
     }
 
-    public List<ExpensaGeneralDTO> getExpensas(LocalDate fromPeriod, LocalDate toPeriod, LocalDate period) {
+    public List<ExpensaGeneralDTO> getExpensas(Optional<Date> fromPeriod, Optional<Date> toPeriod, Optional<Date> period) {
 
         List<ExpensaGeneral> expensasGenerales = new ArrayList<>();
 
-        if (period != null) {
-            expensasGenerales.add(expensaGeneralRepository.findByPeriodo(period));
-        } else {
-            expensasGenerales.addAll(expensaGeneralRepository.findAllByPeriodoBetween(fromPeriod, toPeriod));
+        if (period.isPresent()) {
+            expensasGenerales.add(expensaGeneralRepository.findByPeriodo(period.get()));
+        } else if (fromPeriod.isPresent() && toPeriod.isPresent()) {
+            expensasGenerales.addAll(expensaGeneralRepository.findAllByPeriodoBetween(fromPeriod.get(), toPeriod.get()));
         }
 
         return expensasGenerales.stream().filter(Objects::nonNull).map(ExpensaGeneralDTO::new).collect(Collectors.toList());

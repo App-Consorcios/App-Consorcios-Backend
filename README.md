@@ -22,7 +22,7 @@ https://app-consorcios-backend.herokuapp.com/
 
 ### Comandos Utiles
 
-Pushear cambios y subir a produccion
+Subir a Produccion
 ```
 git push heroku master
 ```
@@ -171,11 +171,11 @@ Response
 Request
 ```
 {
-	"nombre": "Gasto Administrativo",
+    "nombre": "Gasto Administrativo",
     "descripcion": "alguna desc",
 	"tipoConcepto": {
-		"nombre": "General"
-	}
+        "nombre": "General"
+    }
 }
 
 ```

@@ -23,7 +23,7 @@ public class ConceptoController {
     }
 
     @GetMapping(value = "/conceptos/tipos")
-    public List<TipoConceptoDTO> getTipoConcepto() {
+    public List<TipoConceptoDTO> getTiposConcepto() {
         return conceptoService.getAllConceptoTipos();
     }
 

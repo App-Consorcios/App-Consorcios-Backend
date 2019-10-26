@@ -1,5 +1,7 @@
 package com.seminario.entity;
 
+import com.seminario.dto.ConceptoDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,9 @@ public class Concepto {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    @Column(name = "descripcion", nullable = false)
+    private String descripcion;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="tipo_concepto_id", nullable=false)
     private TipoConcepto tipoConcepto;
@@ -20,8 +25,9 @@ public class Concepto {
     public Concepto() {
     }
 
-    public Concepto(String nombre, TipoConcepto tipoConcepto) {
-        this.nombre = nombre;
+    public Concepto(ConceptoDTO dto, TipoConcepto tipoConcepto) {
+        this.nombre = dto.getNombre();
+        this.descripcion = dto.getDescripcion();
         this.tipoConcepto = tipoConcepto;
     }
 
@@ -29,23 +35,16 @@ public class Concepto {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public TipoConcepto getTipoConcepto() {
         return tipoConcepto;
     }
 
-    public void setTipoConcepto(TipoConcepto tipoConcepto) {
-        this.tipoConcepto = tipoConcepto;
-    }
 }

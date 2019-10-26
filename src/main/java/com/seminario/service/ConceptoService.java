@@ -32,7 +32,7 @@ public class ConceptoService {
 
     public ConceptoDTO saveConcepto(ConceptoDTO dto) {
         TipoConcepto tipoConcepto = tipoConceptoRepository.findByNombre(dto.getTipoConcepto().getNombre());
-        conceptoRepository.save(new Concepto(dto.getNombre(), tipoConcepto));
+        conceptoRepository.save(new Concepto(dto, tipoConcepto));
         return dto;
     }
 

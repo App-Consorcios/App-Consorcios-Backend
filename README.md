@@ -172,6 +172,7 @@ Request
 ```
 {
 	"nombre": "Gasto Administrativo",
+    "descripcion": "alguna desc",
 	"tipoConcepto": {
 		"nombre": "General"
 	}
@@ -187,6 +188,7 @@ Response
 [
     {
         "nombre": "Gasto Administrativo",
+        "descripcion": "alguna desc",
         "tipoConcepto": {
             "nombre": "General",
             "color": "Rojo"
@@ -194,6 +196,7 @@ Response
     },
     {
         "nombre": "Gasto Mantenimiento",
+        "descripcion": "otra desc",
         "tipoConcepto": {
             "nombre": "General",
             "color": "Rojo"

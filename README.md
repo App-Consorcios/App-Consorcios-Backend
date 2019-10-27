@@ -73,6 +73,7 @@ Request
   "apellido": "Rodriguez",
   "password": "admin123",
   "mail": "rodriguez@admin.com",
+  "imagen": "urlToImg",
   "roles": [
     {
       "nombre": "admin"
@@ -92,6 +93,7 @@ Response
         "nombre": "Jorge",
         "apellido": "Rodriguez",
         "mail": "rodriguez@admin.com",
+        "imagen": "urlToImg",
         "roles": [
             {
                 "nombre": "admin"
@@ -107,6 +109,8 @@ Response
 
 #### Ejemplos
 
+Usuario Valido:
+
 /login?mail=rodriguez@admin.com&password=admin123
 
 Response
@@ -118,6 +122,7 @@ Response
         "nombre": "Jorge",
         "apellido": "Rodriguez",
         "mail": "rodriguez@admin.com",
+        "imagen": "urlToImg",
         "roles": [
             {
                 "nombre": "admin"
@@ -126,6 +131,8 @@ Response
     }
 }
 ```
+
+Usuario Invalido:
 
 /login?mail=falso@admin.com&password=admin123
 

@@ -21,7 +21,7 @@ public class ExpensaGeneral {
     private Date periodo;
 
     @OneToMany(mappedBy = "expensaGeneral", cascade = CascadeType.ALL)
-    private List<ItemExpensa> items;
+    private List<ItemExpensaGeneral> items;
 
     public ExpensaGeneral() {
     }
@@ -42,11 +42,11 @@ public class ExpensaGeneral {
         this.periodo = periodo.toDate();
     }
 
-    public List<ItemExpensa> getItems() {
+    public List<ItemExpensaGeneral> getItems() {
         return items;
     }
 
-    public void setItems(List<ItemExpensa> items) {
+    public void setItems(List<ItemExpensaGeneral> items) {
         this.items = items;
     }
 }

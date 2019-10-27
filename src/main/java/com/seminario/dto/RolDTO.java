@@ -3,7 +3,7 @@ package com.seminario.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.seminario.entity.Rol;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_ABSENT)
 public class RolDTO {
 
     private String nombre;

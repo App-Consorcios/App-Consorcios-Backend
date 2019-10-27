@@ -7,25 +7,25 @@ import com.seminario.util.DateUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_ABSENT)
 public class ExpensaGeneralDTO {
 
     private String periodo;
-    private List<ItemExpensaDTO> items;
+    private List<ItemExpensaDTO> itemsGenerales;
 
     public ExpensaGeneralDTO() {
     }
 
     public ExpensaGeneralDTO(ExpensaGeneral expensaGeneral) {
         this.periodo = DateUtil.getStrDate(expensaGeneral.getPeriodo());
-        this.items = expensaGeneral.getItems().stream().map(ItemExpensaDTO::new).collect(Collectors.toList());
+        this.itemsGenerales = expensaGeneral.getItems().stream().map(ItemExpensaDTO::new).collect(Collectors.toList());
     }
 
     public String getPeriodo() {
         return periodo;
     }
 
-    public List<ItemExpensaDTO> getItems() {
-        return items;
+    public List<ItemExpensaDTO> getItemsGenerales() {
+        return itemsGenerales;
     }
 }

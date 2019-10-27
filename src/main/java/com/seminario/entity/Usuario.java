@@ -5,6 +5,7 @@ import com.seminario.dto.UsuarioDTO;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Usuario {
@@ -26,6 +27,9 @@ public class Usuario {
     @Column(name = "mail", unique = true, nullable = false)
     private String mail;
 
+    @Column(name = "imagen")
+    private String imagen;
+
     @ManyToMany(cascade = {
             CascadeType.MERGE
     })
@@ -43,6 +47,7 @@ public class Usuario {
         this.apellido = dto.getApellido();
         this.password = dto.getPassword();
         this.mail = dto.getMail();
+        dto.getImagen().ifPresent(imagen -> this.imagen = imagen);
     }
 
     public long getId() {
@@ -83,6 +88,14 @@ public class Usuario {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public Optional<String> getImagen() {
+        return Optional.ofNullable(imagen);
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public List<Rol> getRoles() {

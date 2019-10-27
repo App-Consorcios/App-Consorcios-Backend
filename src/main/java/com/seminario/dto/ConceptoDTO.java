@@ -3,7 +3,7 @@ package com.seminario.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.seminario.entity.Concepto;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_ABSENT)
 public class ConceptoDTO {
 
     private String nombre;

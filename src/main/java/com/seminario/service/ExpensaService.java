@@ -2,11 +2,10 @@ package com.seminario.service;
 
 import com.seminario.dto.ExpensaGeneralDTO;
 import com.seminario.entity.ExpensaGeneral;
-import com.seminario.entity.ItemExpensa;
+import com.seminario.entity.ItemExpensaGeneral;
 import com.seminario.repository.ConceptoRepository;
 import com.seminario.repository.ExpensaGeneralRepository;
 import com.seminario.util.DateUtil;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +25,12 @@ public class ExpensaService {
 
         ExpensaGeneral expensaGeneral = new ExpensaGeneral();
 
-        List<ItemExpensa> items = dto.getItems().stream().map(itemDTO -> {
-            ItemExpensa itemExpensa = new ItemExpensa();
-            itemExpensa.setConcepto(conceptoRepository.findByNombre(itemDTO.getConceptoNombre()));
-            itemExpensa.setMonto(itemDTO.getMonto());
-            itemExpensa.setExpensaGeneral(expensaGeneral);
-            return itemExpensa;
+        List<ItemExpensaGeneral> items = dto.getItemsGenerales().stream().map(itemDTO -> {
+            ItemExpensaGeneral itemExpensaGeneral = new ItemExpensaGeneral();
+            itemExpensaGeneral.setConcepto(conceptoRepository.findByNombre(itemDTO.getConceptoNombre()));
+            itemExpensaGeneral.setMonto(itemDTO.getMonto());
+            itemExpensaGeneral.setExpensaGeneral(expensaGeneral);
+            return itemExpensaGeneral;
         }).collect(Collectors.toList());
 
         expensaGeneral.setItems(items);

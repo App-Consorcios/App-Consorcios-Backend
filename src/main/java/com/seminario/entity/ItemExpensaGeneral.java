@@ -3,7 +3,7 @@ package com.seminario.entity;
 import javax.persistence.*;
 
 @Entity
-public class ItemExpensa {
+public class ItemExpensaGeneral {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -21,7 +21,7 @@ public class ItemExpensa {
     @JoinColumn(name="expensa_general_id", nullable=false)
     private ExpensaGeneral expensaGeneral;
 
-    public ItemExpensa() {
+    public ItemExpensaGeneral() {
     }
 
     public long getId() {

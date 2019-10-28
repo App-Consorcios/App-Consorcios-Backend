@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -50,4 +51,19 @@ public class UsuarioService {
         return new LoginDTO(user);
     }
 
+    public UsuarioDTO updateUserRol(Long idUsuario, UsuarioDTO usuarioDTO) {
+        Usuario userToUpdate = userRepository.findById(idUsuario).get();
+
+        List<Rol> roles = usuarioDTO.getRoles().stream().map(rolDTO -> {
+            Rol rol = rolRepository.findByNombre(rolDTO.getNombre());
+            List<Usuario> usuarios = new ArrayList<>();
+            usuarios.add(userToUpdate);
+            rol.setUsuarios(usuarios);
+            return rol;
+        }).collect(Collectors.toList());
+
+        userToUpdate.setRoles(roles);
+
+        return new UsuarioDTO(userRepository.save(userToUpdate));
+    }
 }

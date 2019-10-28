@@ -20,6 +20,12 @@ public class UsuarioController {
         return usuarioService.saveUser(usuarioDTO);
     }
 
+    @PutMapping(value = "/usuario")
+    public UsuarioDTO saveUsuario(@RequestParam(value="id") Long idUsuario,
+                                  @RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioService.updateUserRol(idUsuario, usuarioDTO);
+    }
+
     @GetMapping(value = "/usuarios")
     public List<UsuarioDTO> getUsers() {
         return usuarioService.allUsers();

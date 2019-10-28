@@ -105,6 +105,46 @@ Response
 
 ---
 
+### PUT /usuario?id={userId}
+
+Solo se puede modificar la lista de Roles para el Usuario dado.
+Tener en cuenta que la nueva lista, reemplazara la existente.
+
+Request
+```
+{
+  "roles": [
+    {
+      "nombre": "admin"
+    },
+    {
+      "nombre": "usuario"
+    }
+  ]
+}
+```
+
+Response
+```
+{
+    "id": 2,
+    "nombre": "Jorge",
+    "apellido": "Rodriguez",
+    "mail": "otroAdmin@admin.com",
+    "imagen": "urlToImg",
+    "roles": [
+        {
+            "nombre": "admin"
+        },
+        {
+            "nombre": "usuario"
+        }
+    ]
+}
+```
+
+---
+
 ### GET /login?mail={mail}&password={password}
 
 #### Ejemplos

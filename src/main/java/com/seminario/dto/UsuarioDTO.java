@@ -18,7 +18,7 @@ public class UsuarioDTO {
     private String imagen;
     private List<RolDTO> roles;
 
-    public UsuarioDTO() {   
+    public UsuarioDTO() {
     }
 
     public UsuarioDTO(Usuario entity) {

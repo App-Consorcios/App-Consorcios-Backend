@@ -350,9 +350,9 @@ Response
 Request
 ```
 {
-	"codigoDepartamento": "1-C",
+    "codigoDepartamento": "1-C",
     "descripcionDepartamento": "Descripcion del 1C",
-	"metrosCuadrados": 32,
+    "metrosCuadrados": 32,
     "prorrateo": "0.4",
     "codigoUbicacion": "CF",
     "descripcionUbicacion": "Algo sobre CF"

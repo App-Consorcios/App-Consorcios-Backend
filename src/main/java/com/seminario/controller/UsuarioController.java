@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UsuarioController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class UsuarioController {
     }
 
     @PutMapping(value = "/usuario")
-    public UsuarioDTO saveUsuario(@RequestParam(value="id") Long idUsuario,
+    public UsuarioDTO updateUserRol(@RequestParam(value="id") Long idUsuario,
                                   @RequestBody UsuarioDTO usuarioDTO) {
         return usuarioService.updateUserRol(idUsuario, usuarioDTO);
     }

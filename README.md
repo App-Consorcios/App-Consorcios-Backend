@@ -340,3 +340,101 @@ Response
     }
 ]
 ```
+
+---
+
+## Unidad Funcional
+
+### POST /unidad-funcional
+
+Request
+```
+{
+	"codigoDepartamento": "1-C",
+    "descripcionDepartamento": "Descripcion del 1C",
+	"metrosCuadrados": 32,
+    "prorrateo": "0.4",
+    "codigoUbicacion": "CF",
+    "descripcionUbicacion": "Algo sobre CF"
+}
+```
+---
+
+### PUT /unidad-funcional?id=1
+
+Request
+```
+{
+	"propietario" : {
+		"mail": "pedro@propietario.com"
+	}
+}
+```
+
+Request
+```
+{
+	"inquilino" : {
+		"mail": "maria@inquilina.com"
+	}
+}
+```
+---
+
+### GET /unidades-funcionales
+
+#### Examples
+
+Response
+```
+[
+    {
+        "id": 1,
+        "codigoDepartamento": "1-C",
+        "descripcionDepartamento": "Descripcion del 1C",
+        "metrosCuadrados": 32,
+        "prorrateo": 0.4,
+        "codigoUbicacion": "CF",
+        "descripcionUbicacion": "Algo sobre CF"
+    }
+]
+```
+
+Response with Users
+```
+[
+    {
+        "id": 1,
+        "codigoDepartamento": "1-C",
+        "descripcionDepartamento": "Descripcion del 1C",
+        "metrosCuadrados": 32,
+        "prorrateo": 0.4,
+        "codigoUbicacion": "CF",
+        "descripcionUbicacion": "Algo sobre CF",
+        "propietario": {
+            "id": 1,
+            "nombre": "Pedro",
+            "apellido": "Rodriguez",
+            "mail": "pedro@propietario.com",
+            "imagen": "urlToImg",
+            "roles": [
+                {
+                    "nombre": "propietario"
+                }
+            ]
+        },
+        "inquilino": {
+            "id": 2,
+            "nombre": "Maria",
+            "apellido": "Rodriguez",
+            "mail": "maria@inquilina.com",
+            "imagen": "urlToImg",
+            "roles": [
+                {
+                    "nombre": "inquilino"
+                }
+            ]
+        }
+    }
+]
+```

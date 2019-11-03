@@ -1,6 +1,9 @@
 package com.seminario.entity;
 
+import com.seminario.dto.UnidadFuncionalDTO;
+
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 public class UnidadFuncional {
@@ -28,19 +31,28 @@ public class UnidadFuncional {
     @Column(name = "descripcion_ubicacion", nullable = false)
     private String descripcionUbicacion;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name="consorcio_id", nullable=false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="consorcio_id")
     private Consorcio consorcio;
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="usuario_propietario_id")
     private Usuario propietario;
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="usuario_inquilino_id")
     private Usuario inquilino;
 
     public UnidadFuncional() {
+    }
+
+    public UnidadFuncional(UnidadFuncionalDTO dto) {
+        this.codigoDepartamento = dto.getCodigoDepartamento();
+        this.descripcionDepartamento = dto.getDescripcionDepartamento();
+        this.metrosCuadrados = dto.getMetrosCuadrados();
+        this.prorrateo = dto.getProrrateo();
+        this.codigoUbicacion = dto.getCodigoUbicacion();
+        this.descripcionUbicacion = dto.getDescripcionUbicacion();
     }
 
     public long getId() {
@@ -99,24 +111,24 @@ public class UnidadFuncional {
         this.descripcionUbicacion = descripcionUbicacion;
     }
 
-    public Consorcio getConsorcio() {
-        return consorcio;
+    public Optional<Consorcio> getConsorcio() {
+        return Optional.ofNullable(consorcio);
     }
 
     public void setConsorcio(Consorcio consorcio) {
         this.consorcio = consorcio;
     }
 
-    public Usuario getPropietario() {
-        return propietario;
+    public Optional<Usuario> getPropietario() {
+        return Optional.ofNullable(propietario);
     }
 
     public void setPropietario(Usuario propietario) {
         this.propietario = propietario;
     }
 
-    public Usuario getInquilino() {
-        return inquilino;
+    public Optional<Usuario> getInquilino() {
+        return Optional.ofNullable(inquilino);
     }
 
     public void setInquilino(Usuario inquilino) {

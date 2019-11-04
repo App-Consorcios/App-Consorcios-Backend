@@ -218,8 +218,7 @@ Response
 Request
 ```
 {
-    "nombre": "Gasto Administrativo",
-    "descripcion": "alguna desc",
+    "nombre": "Gasto Administrativo",    
 	"tipoConcepto": {
         "nombre": "General"
     }
@@ -235,7 +234,6 @@ Response
 [
     {
         "nombre": "Gasto Administrativo",
-        "descripcion": "alguna desc",
         "tipoConcepto": {
             "nombre": "General",
             "color": "Rojo"
@@ -243,13 +241,23 @@ Response
     },
     {
         "nombre": "Gasto Mantenimiento",
-        "descripcion": "otra desc",
         "tipoConcepto": {
             "nombre": "General",
             "color": "Rojo"
         }
     }
 ]
+```
+---
+
+### DELETE /concepto?nombre=Gasto+Asd
+
+Delete Concepto by Name. Replace whitespaces with "+".
+In this example the Concept name was "Gasto Asd"
+
+Response
+```
+true
 ```
 ---
 
@@ -261,13 +269,15 @@ Request
 ```
 {
   "periodo": "2019-10",
-  "items": [
+  "itemsGenerales": [
     {
       "conceptoNombre": "Gasto Administrativo",
+      "descripcion": "Descricion de Gasto Administrativo",
       "monto": "180"
     },
     {
       "conceptoNombre": "Gasto Mantenimiento",
+      "descripcion": "Descricion de Gasto Mantenimiento",
       "monto": "186.4"
     }
   ]
@@ -293,13 +303,15 @@ Response
 [
     {
         "periodo": "2019-10",
-        "items": [
+        "itemsGenerales": [
             {
                 "conceptoNombre": "Gasto Administrativo",
+                "descripcion": "Descricion de Gasto Administrativo",
                 "monto": 180.0
             },
             {
                 "conceptoNombre": "Gasto Mantenimiento",
+                "descripcion": "Descricion de Gasto Mantenimiento",
                 "monto": 186.4
             }
         ]
@@ -314,26 +326,30 @@ Response
 [
     {
         "periodo": "2019-10",
-        "items": [
+        "itemsGenerales": [
             {
                 "conceptoNombre": "Gasto Administrativo",
+                "descripcion": "Descricion de Gasto Administrativo",
                 "monto": 180.0
             },
             {
                 "conceptoNombre": "Gasto Mantenimiento",
+                "descripcion": "Descricion de Gasto Mantenimiento",
                 "monto": 186.4
             }
         ]
     },
     {
         "periodo": "2019-11",
-        "items": [
+        "itemsGenerales": [
             {
                 "conceptoNombre": "Gasto Administrativo",
+                "descripcion": "Descricion de Gasto Administrativo",
                 "monto": 294.0
             },
             {
                 "conceptoNombre": "Gasto Mantenimiento",
+                "descripcion": "Descricion de Gasto Mantenimiento",
                 "monto": 2523.43
             }
         ]

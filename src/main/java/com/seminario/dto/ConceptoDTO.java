@@ -7,7 +7,6 @@ import com.seminario.entity.Concepto;
 public class ConceptoDTO {
 
     private String nombre;
-    private String descripcion;
     private TipoConceptoDTO tipoConcepto;
 
     public ConceptoDTO() {
@@ -16,7 +15,6 @@ public class ConceptoDTO {
     public ConceptoDTO(Concepto entity) {
         this.nombre = entity.getNombre();
         this.tipoConcepto = new TipoConceptoDTO(entity.getTipoConcepto());
-        this.descripcion = entity.getDescripcion();
     }
 
     public String getNombre() {
@@ -25,9 +23,5 @@ public class ConceptoDTO {
 
     public TipoConceptoDTO getTipoConcepto() {
         return tipoConcepto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
     }
 }

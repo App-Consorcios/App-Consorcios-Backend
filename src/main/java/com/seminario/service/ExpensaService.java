@@ -1,6 +1,7 @@
 package com.seminario.service;
 
 import com.seminario.dto.ExpensaGeneralDTO;
+import com.seminario.entity.Concepto;
 import com.seminario.entity.ExpensaGeneral;
 import com.seminario.entity.ItemExpensaGeneral;
 import com.seminario.repository.ConceptoRepository;
@@ -26,11 +27,8 @@ public class ExpensaService {
         ExpensaGeneral expensaGeneral = new ExpensaGeneral();
 
         List<ItemExpensaGeneral> items = dto.getItemsGenerales().stream().map(itemDTO -> {
-            ItemExpensaGeneral itemExpensaGeneral = new ItemExpensaGeneral();
-            itemExpensaGeneral.setConcepto(conceptoRepository.findByNombre(itemDTO.getConceptoNombre()));
-            itemExpensaGeneral.setMonto(itemDTO.getMonto());
-            itemExpensaGeneral.setExpensaGeneral(expensaGeneral);
-            return itemExpensaGeneral;
+            Concepto concepto = conceptoRepository.findByNombre(itemDTO.getConceptoNombre());
+            return new ItemExpensaGeneral(itemDTO, concepto, expensaGeneral);
         }).collect(Collectors.toList());
 
         expensaGeneral.setItems(items);

@@ -15,9 +15,6 @@ public class Concepto {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion", nullable = false)
-    private String descripcion;
-
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="tipo_concepto_id", nullable=false)
     private TipoConcepto tipoConcepto;
@@ -27,7 +24,6 @@ public class Concepto {
 
     public Concepto(ConceptoDTO dto, TipoConcepto tipoConcepto) {
         this.nombre = dto.getNombre();
-        this.descripcion = dto.getDescripcion();
         this.tipoConcepto = tipoConcepto;
     }
 
@@ -37,10 +33,6 @@ public class Concepto {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
     }
 
     public TipoConcepto getTipoConcepto() {

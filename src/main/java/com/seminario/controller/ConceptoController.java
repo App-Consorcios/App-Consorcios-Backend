@@ -34,4 +34,10 @@ public class ConceptoController {
     public List<ConceptoDTO> getConceptos() {
         return conceptoService.getAllConceptos();
     }
+
+    @DeleteMapping(value = "/concepto")
+    public Boolean deleteConcepto(@RequestParam(value="nombre") String nombre) {
+        return conceptoService.deleteConepto(nombre);
+    }
+
 }

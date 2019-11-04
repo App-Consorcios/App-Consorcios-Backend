@@ -39,4 +39,10 @@ public class ConceptoService {
     public List<ConceptoDTO> getAllConceptos() {
         return conceptoRepository.findAll().stream().map(ConceptoDTO::new).collect(Collectors.toList());
     }
+
+    public Boolean deleteConepto(String nombre) {
+        Concepto conceptoToDelete = conceptoRepository.findByNombre(nombre);
+        conceptoRepository.delete(conceptoToDelete);
+        return true;
+    }
 }

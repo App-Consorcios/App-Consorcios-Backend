@@ -1,5 +1,7 @@
 package com.seminario.entity;
 
+import com.seminario.dto.ItemExpensaDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,9 @@ public class ItemExpensaGeneral {
     @Column(name = "monto", nullable = false)
     private Double monto;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="concepto_id", nullable=false)
     private Concepto concepto;
@@ -22,6 +27,13 @@ public class ItemExpensaGeneral {
     private ExpensaGeneral expensaGeneral;
 
     public ItemExpensaGeneral() {
+    }
+
+    public ItemExpensaGeneral(ItemExpensaDTO itemDTO, Concepto concepto, ExpensaGeneral expensaGeneral) {
+        this.concepto = concepto;
+        this.monto = itemDTO.getMonto();
+        this.descripcion = itemDTO.getDescripcion();
+        this.expensaGeneral = expensaGeneral;
     }
 
     public long getId() {
@@ -54,5 +66,13 @@ public class ItemExpensaGeneral {
 
     public void setExpensaGeneral(ExpensaGeneral expensaGeneral) {
         this.expensaGeneral = expensaGeneral;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

@@ -12,7 +12,7 @@ Si desean cambiar el puerto, pueden editar el application.properties
 
 # Postman
 
-https://www.getpostman.com/collections/bc53ce0b99d572c2a3c4
+https://www.getpostman.com/collections/cb0ce0b86b4c1d81a77b
 
 # Heroku
 

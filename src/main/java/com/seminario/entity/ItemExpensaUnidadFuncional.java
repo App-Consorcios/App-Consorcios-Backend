@@ -24,6 +24,12 @@ public class ItemExpensaUnidadFuncional {
     public ItemExpensaUnidadFuncional() {
     }
 
+    public ItemExpensaUnidadFuncional(Double monto, Concepto concepto, ExpensaUnidadFuncional expensaUnidadFuncional) {
+        this.monto = monto;
+        this.concepto = concepto;
+        this.expensaUnidadFuncional = expensaUnidadFuncional;
+    }
+
     public long getId() {
         return id;
     }

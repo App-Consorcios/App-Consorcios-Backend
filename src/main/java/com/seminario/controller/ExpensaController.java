@@ -1,5 +1,6 @@
 package com.seminario.controller;
 
+import com.seminario.dto.ExpensasUnidadesFuncionalesWrapperDTO;
 import com.seminario.dto.ExpensaGeneralDTO;
 import com.seminario.service.ExpensaService;
 import com.seminario.util.DateUtil;
@@ -33,4 +34,21 @@ public class ExpensaController {
 
         return expensaService.getExpensas(fromPeriod, toPeriod, period);
     }
+
+    @GetMapping(value = "/expensas-unidades-funcionales/calcular")
+    public ExpensasUnidadesFuncionalesWrapperDTO calcularExpensasUnidadesFuncionales() {
+        return expensaService.calcularExpensasUnidadesFuncionales();
+    }
+
+    @PostMapping(value = "/expensas-unidades-funcionales")
+    public ExpensasUnidadesFuncionalesWrapperDTO saveExpensasUnidadesFuncionales() {
+        return expensaService.saveExpensasUnidadesFuncionales();
+    }
+
+    @GetMapping(value = "/expensas-unidades-funcionales")
+    public ExpensasUnidadesFuncionalesWrapperDTO obtenerExpensasUnidadesFuncionales(@RequestParam(value="periodo") String strPeriod
+    ) {
+        return expensaService.obtenerExpensasUnidadesFuncionales(DateUtil.getDate(strPeriod));
+    }
+
 }

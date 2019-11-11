@@ -359,6 +359,131 @@ Response
 
 ---
 
+### GET /expensas-unidades-funcionales/calcular
+
+Calcula las expensas de todas las unidades funcionales para el Mes en curso.
+El calculo consiste en multiplicar el factor de prorrateo por cada valor de concepto de la expensa general.
+
+En el ejemplo:
+* PB-01 tiene 0,07 de prorrateo
+* PB-02 tiene 0.1 de prorrateo
+* El total de "Gasto Administrativo" es de 14000
+* El total de "Gasto Mantenimiento" es de 600
+
+Response
+```
+{
+    "periodo": "2019-11",
+    "expensasUnidadesFuncionales": [
+        {
+            "codigoDepartamento": "PB-01",
+            "items": [
+                {
+                    "conceptoNombre": "Gasto Administrativo",
+                    "monto": 980.0
+                },
+                {
+                    "conceptoNombre": "Gasto Mantenimiento",
+                    "monto": 42.0
+                }
+            ]
+        },
+        {
+            "codigoDepartamento": "PB-02",
+            "items": [
+                {
+                    "conceptoNombre": "Gasto Administrativo",
+                    "monto": 1400.0
+                },
+                {
+                    "conceptoNombre": "Gasto Mantenimiento",
+                    "monto": 60.0
+                }
+            ]
+        }
+    ]
+}
+```
+---
+
+### POST /expensas-unidades-funcionales
+
+No es necesario enviar body. El backend vuelve a realizar el calculo del Mes en curso, y persiste el resultado.
+
+Response
+```
+{
+    "periodo": "2019-11",
+    "expensasUnidadesFuncionales": [
+        {
+            "codigoDepartamento": "PB-01",
+            "items": [
+                {
+                    "conceptoNombre": "Gasto Administrativo",
+                    "monto": 980.0
+                },
+                {
+                    "conceptoNombre": "Gasto Mantenimiento",
+                    "monto": 42.0
+                }
+            ]
+        },
+        {
+            "codigoDepartamento": "PB-02",
+            "items": [
+                {
+                    "conceptoNombre": "Gasto Administrativo",
+                    "monto": 1400.0
+                },
+                {
+                    "conceptoNombre": "Gasto Mantenimiento",
+                    "monto": 60.0
+                }
+            ]
+        }
+    ]
+}
+```
+---
+
+### GET /expensas-unidades-funcionales?periodo=2019-11
+
+Response
+```
+{
+    "periodo": "2019-11",
+    "expensasUnidadesFuncionales": [
+        {
+            "codigoDepartamento": "PB-01",
+            "items": [
+                {
+                    "conceptoNombre": "Gasto Administrativo",
+                    "monto": 980.0
+                },
+                {
+                    "conceptoNombre": "Gasto Mantenimiento",
+                    "monto": 42.0
+                }
+            ]
+        },
+        {
+            "codigoDepartamento": "PB-02",
+            "items": [
+                {
+                    "conceptoNombre": "Gasto Administrativo",
+                    "monto": 1400.0
+                },
+                {
+                    "conceptoNombre": "Gasto Mantenimiento",
+                    "monto": 60.0
+                }
+            ]
+        }
+    ]
+}
+```
+---
+
 ## Unidad Funcional
 
 ### POST /unidad-funcional

@@ -579,3 +579,91 @@ Response with Users
     }
 ]
 ```
+
+---
+
+## Reuniones
+
+### POST /reunion
+
+Request
+```
+{
+  "color": "rojo",
+  "descripcion": "desc",
+  "fecha": "2016-11-15T20:54:40.110Z",
+  "temas": [
+    {
+      "descripcion": "Agua"
+    },
+    {
+      "descripcion": "Fuego"
+    }
+  ]
+}
+```
+---
+
+### PUT /reunion?id=1
+
+Only updates the date.
+
+Request
+```
+{
+  "fecha": "2016-11-15T18:54:40.110Z"
+}
+```
+
+Response
+```
+{
+    "id": 1,
+    "color": "rojo",
+    "descripcion": "desc",
+    "fecha": "2016-11-15T18:54:40.110+0000",
+    "temas": [
+        {
+            "id": 1,
+            "descripcion": "Agua"
+        },
+        {
+            "id": 2,
+            "descripcion": "Fuego"
+        }
+    ]
+}
+```
+---
+
+### DELETE /reunion?id=1
+
+Response
+```
+true
+```
+---
+
+### GET /reuniones
+
+Response
+```
+[
+    {
+        "id": 1,
+        "color": "rojo",
+        "descripcion": "desc",
+        "fecha": "2016-11-15T18:54:40.110+0000",
+        "temas": [
+            {
+                "id": 1,
+                "descripcion": "Agua"
+            },
+            {
+                "id": 2,
+                "descripcion": "Fuego"
+            }
+        ]
+    }
+]
+```

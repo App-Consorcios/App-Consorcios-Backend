@@ -30,6 +30,10 @@ public class Reunion {
     @OneToMany(mappedBy = "reunion", cascade = CascadeType.ALL)
     private List<Tema> temas = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="consorcio_id")
+    private Consorcio consorcio;
+
     public Reunion() {
     }
 

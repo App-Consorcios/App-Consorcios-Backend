@@ -34,17 +34,11 @@ public class UnidadFuncionalService {
     public UnidadFuncionalDTO updateUnidadFuncional(Long idUnidadFuncional, UnidadFuncionalDTO unidadFuncionalDTO) {
         UnidadFuncional unidadFuncional = unidadFuncionalRepository.findById(idUnidadFuncional).get();
 
-        Optional<UsuarioDTO> inquilinoDTO = unidadFuncionalDTO.getInquilino();
-        if (inquilinoDTO.isPresent()) {
-            Usuario usuarioInquilino = userRepository.findByMail(inquilinoDTO.get().getMail());
-            unidadFuncional.setInquilino(usuarioInquilino);
-        }
+        Optional<Usuario> inquilino = unidadFuncionalDTO.getInquilino().map(user -> userRepository.findByMail(user.getMail()));
+        unidadFuncional.setInquilino(inquilino.orElse(null));
 
-        Optional<UsuarioDTO> propietarioDTO = unidadFuncionalDTO.getPropietario();
-        if (propietarioDTO.isPresent()) {
-            Usuario usuarioPropietario = userRepository.findByMail(propietarioDTO.get().getMail());
-            unidadFuncional.setPropietario(usuarioPropietario);
-        }
+        Optional<Usuario> propietario = unidadFuncionalDTO.getPropietario().map(user -> userRepository.findByMail(user.getMail()));
+        unidadFuncional.setPropietario(propietario.orElse(null));
 
         UnidadFuncional saved = unidadFuncionalRepository.save(unidadFuncional);
         return new UnidadFuncionalDTO(saved);

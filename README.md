@@ -503,20 +503,33 @@ Request
 
 ### PUT /unidad-funcional?id=1
 
+Servicio para actualizar el propietario y/o inquilino de la unidad funcional dada. 
+Tener en cuenta que si uno de los valores no se envia, se elimina cualquier asociacion existente respecto a dicho valor. 
+
+Ejemplos
+
+Aqui se asocia tanto el propietario como el inquilino
+
 Request
 ```
 {
-	"propietario" : {
-		"mail": "pedro@propietario.com"
-	}
+    "propietario" : {
+        "mail": "pedro@propietario.com"
+    },
+    "inquilino" : {
+        "mail": "maria@inquilina.com"
+    }
 }
 ```
+
+Pero aqui solo se asocia el inquilino. Entonces si existia alguna asociacion de propietario, se pierde.
+En caso de querer manternerla, se debe enviar en el request la asociacion existente.
 
 Request
 ```
 {
 	"inquilino" : {
-		"mail": "maria@inquilina.com"
+		"mail": "otraPersona@inquilina.com"
 	}
 }
 ```

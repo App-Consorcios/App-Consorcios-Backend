@@ -26,6 +26,12 @@ public class UsuarioController {
         return usuarioService.updateUserRol(idUsuario, usuarioDTO);
     }
 
+    @PutMapping(value = "/usuario/imagen")
+    public UsuarioDTO updateUserImagen(@RequestParam(value="id") Long idUsuario,
+                                    @RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioService.updateUserImagen(idUsuario, usuarioDTO);
+    }
+
     @GetMapping(value = "/usuarios")
     public List<UsuarioDTO> getUsers() {
         return usuarioService.allUsers();

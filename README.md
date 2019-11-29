@@ -145,6 +145,19 @@ Response
 
 ---
 
+### PUT /usuario/imagen?id={userId}
+
+Solo se puede modificar la imagen para el Usuario dado.
+
+Request
+```
+{
+  "imagen": "nuevaUrlImagen"
+}
+```
+
+---
+
 ### GET /login?mail={mail}&password={password}
 
 #### Ejemplos
@@ -501,7 +514,7 @@ Request
 ```
 ---
 
-### PUT /unidad-funcional?id=1
+### PUT /unidad-funcional?id={unidadFuncionalId}
 
 Servicio para actualizar el propietario y/o inquilino de la unidad funcional dada. 
 Tener en cuenta que si uno de los valores no se envia, se elimina cualquier asociacion existente respecto a dicho valor. 
@@ -531,6 +544,19 @@ Request
 	"inquilino" : {
 		"mail": "otraPersona@inquilina.com"
 	}
+}
+```
+
+---
+
+### PUT /unidad-funcional/imagen?id={unidadFuncionalId}
+
+Servicio para actualizar la imagen de la unidad funcional dada. 
+ 
+Request
+```
+{
+  "imagen": "nuevaUrlImagen"
 }
 ```
 ---

@@ -43,6 +43,9 @@ public class UnidadFuncional {
     @JoinColumn(name="usuario_inquilino_id")
     private Usuario inquilino;
 
+    @Column(name = "imagen")
+    private String imagen;
+
     public UnidadFuncional() {
     }
 
@@ -53,6 +56,7 @@ public class UnidadFuncional {
         this.prorrateo = dto.getProrrateo();
         this.codigoUbicacion = dto.getCodigoUbicacion();
         this.descripcionUbicacion = dto.getDescripcionUbicacion();
+        dto.getImagen().ifPresent(imagen -> this.imagen = imagen);
     }
 
     public long getId() {
@@ -133,5 +137,13 @@ public class UnidadFuncional {
 
     public void setInquilino(Usuario inquilino) {
         this.inquilino = inquilino;
+    }
+
+    public Optional<String> getImagen() {
+        return Optional.ofNullable(imagen);
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

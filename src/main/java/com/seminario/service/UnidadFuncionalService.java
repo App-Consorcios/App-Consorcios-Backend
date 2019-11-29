@@ -43,4 +43,10 @@ public class UnidadFuncionalService {
         UnidadFuncional saved = unidadFuncionalRepository.save(unidadFuncional);
         return new UnidadFuncionalDTO(saved);
     }
+
+    public UnidadFuncionalDTO updateUnidadFuncionalImagen(Long idUnidadFuncional, UnidadFuncionalDTO unidadFuncionalDTO) {
+        UnidadFuncional unidadFuncional = unidadFuncionalRepository.findById(idUnidadFuncional).get();
+        unidadFuncional.setImagen(unidadFuncionalDTO.getImagen().get());
+        return new UnidadFuncionalDTO(unidadFuncionalRepository.save(unidadFuncional));
+    }
 }

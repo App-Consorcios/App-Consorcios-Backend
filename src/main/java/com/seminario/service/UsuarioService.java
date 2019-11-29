@@ -66,4 +66,10 @@ public class UsuarioService {
 
         return new UsuarioDTO(userRepository.save(userToUpdate));
     }
+
+    public UsuarioDTO updateUserImagen(Long idUsuario, UsuarioDTO usuarioDTO) {
+        Usuario userToUpdate = userRepository.findById(idUsuario).get();
+        userToUpdate.setImagen(usuarioDTO.getImagen().get());
+        return new UsuarioDTO(userRepository.save(userToUpdate));
+    }
 }

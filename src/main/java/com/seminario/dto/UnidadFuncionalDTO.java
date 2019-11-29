@@ -28,6 +28,8 @@ public class UnidadFuncionalDTO {
 
     private UsuarioDTO inquilino;
 
+    private String imagen;
+
     public UnidadFuncionalDTO() {
     }
 
@@ -41,6 +43,7 @@ public class UnidadFuncionalDTO {
         this.descripcionUbicacion = entity.getDescripcionUbicacion();
         entity.getPropietario().ifPresent(prop -> this.propietario = new UsuarioDTO(prop));
         entity.getInquilino().ifPresent(inq -> this.inquilino = new UsuarioDTO(inq));
+        entity.getImagen().ifPresent(imagen -> this.imagen = imagen);
     }
 
     public long getId() {
@@ -81,5 +84,9 @@ public class UnidadFuncionalDTO {
 
     public Optional<UsuarioDTO> getInquilino() {
         return Optional.ofNullable(inquilino);
+    }
+
+    public Optional<String> getImagen() {
+        return Optional.ofNullable(imagen);
     }
 }

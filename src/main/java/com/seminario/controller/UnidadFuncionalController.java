@@ -29,4 +29,10 @@ public class UnidadFuncionalController {
                                                     @RequestBody UnidadFuncionalDTO unidadFuncionalDTO) {
         return unidadFuncionalService.updateUnidadFuncional(idUnidadFuncional, unidadFuncionalDTO);
     }
+
+    @PutMapping(value = "/unidad-funcional/imagen")
+    public UnidadFuncionalDTO updateUnidadFuncionalImagen(@RequestParam(value="id") Long idUnidadFuncional,
+                                                    @RequestBody UnidadFuncionalDTO unidadFuncionalDTO) {
+        return unidadFuncionalService.updateUnidadFuncionalImagen(idUnidadFuncional, unidadFuncionalDTO);
+    }
 }

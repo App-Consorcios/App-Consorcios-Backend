@@ -26,6 +26,12 @@ public class ConceptoService {
         return dto;
     }
 
+    public Boolean deleteTipoConcepto(String nombre) {
+        TipoConcepto tipoConceptoToDelete = tipoConceptoRepository.findByNombre(nombre);
+        tipoConceptoRepository.delete(tipoConceptoToDelete);
+        return true;
+    }
+
     public List<TipoConceptoDTO> getAllConceptoTipos() {
         return tipoConceptoRepository.findAll().stream().map(TipoConceptoDTO::new).collect(Collectors.toList());
     }
@@ -45,4 +51,5 @@ public class ConceptoService {
         conceptoRepository.delete(conceptoToDelete);
         return true;
     }
+
 }

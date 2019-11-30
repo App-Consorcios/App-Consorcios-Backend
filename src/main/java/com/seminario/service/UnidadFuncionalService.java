@@ -1,7 +1,6 @@
 package com.seminario.service;
 
 import com.seminario.dto.UnidadFuncionalDTO;
-import com.seminario.dto.UsuarioDTO;
 import com.seminario.entity.UnidadFuncional;
 import com.seminario.entity.Usuario;
 import com.seminario.repository.UnidadFuncionalRepository;

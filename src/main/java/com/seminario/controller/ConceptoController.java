@@ -20,6 +20,11 @@ public class ConceptoController {
         return conceptoService.saveTipoConcepto(tipoConceptoRequest);
     }
 
+    @DeleteMapping(value = "/conceptos/tipo")
+    public Boolean deleteTipoConcepto(@RequestParam(value="nombre") String nombre) {
+        return conceptoService.deleteTipoConcepto(nombre);
+    }
+
     @GetMapping(value = "/conceptos/tipos")
     public List<TipoConceptoDTO> getTiposConcepto() {
         return conceptoService.getAllConceptoTipos();

@@ -209,6 +209,16 @@ Request
 ```
 ---
 
+### DELETE /conceptos/tipo?nombre=Generales
+
+Delete TipoConcepto by Name. Replace whitespaces with "+".
+
+Response
+```
+true
+```
+---
+
 ### GET /conceptos/tipos
 
 Response 

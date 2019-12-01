@@ -2,7 +2,6 @@ package com.seminario.service;
 
 
 import com.seminario.dto.LoginDTO;
-import com.seminario.dto.RolDTO;
 import com.seminario.dto.UsuarioDTO;
 import com.seminario.entity.Rol;
 import com.seminario.entity.Usuario;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component

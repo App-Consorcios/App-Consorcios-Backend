@@ -1,6 +1,7 @@
 package com.seminario.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.seminario.entity.Concepto;
 import com.seminario.entity.ItemExpensaGeneral;
 import com.seminario.entity.ItemExpensaUnidadFuncional;
 
@@ -8,6 +9,7 @@ import com.seminario.entity.ItemExpensaUnidadFuncional;
 public class ItemExpensaDTO {
 
     private String conceptoNombre;
+    private ConceptoDTO concepto;
     private String descripcion;
     private Double monto;
 
@@ -15,19 +17,26 @@ public class ItemExpensaDTO {
     }
 
     public ItemExpensaDTO(ItemExpensaGeneral entity) {
+        this.concepto = new ConceptoDTO(entity.getConcepto());
         this.conceptoNombre = entity.getConcepto().getNombre();
         this.descripcion = entity.getDescripcion();
         this.monto = entity.getMonto();
     }
 
     public ItemExpensaDTO(ItemExpensaUnidadFuncional entity) {
+        this.concepto = new ConceptoDTO(entity.getConcepto());
         this.conceptoNombre = entity.getConcepto().getNombre();
         this.monto = entity.getMonto();
     }
 
-    public ItemExpensaDTO(String conceptoNombre, Double monto) {
-        this.conceptoNombre = conceptoNombre;
+    public ItemExpensaDTO(Concepto conceptoEntity, Double monto) {
+        this.concepto = new ConceptoDTO(conceptoEntity);
+        this.conceptoNombre = conceptoEntity.getNombre();
         this.monto = monto;
+    }
+
+    public ConceptoDTO getConcepto() {
+        return concepto;
     }
 
     public String getConceptoNombre() {
@@ -40,17 +49,5 @@ public class ItemExpensaDTO {
 
     public Double getMonto() {
         return monto;
-    }
-
-    public void setConceptoNombre(String conceptoNombre) {
-        this.conceptoNombre = conceptoNombre;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
     }
 }

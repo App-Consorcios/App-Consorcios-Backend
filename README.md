@@ -329,11 +329,25 @@ Response
         "itemsGenerales": [
             {
                 "conceptoNombre": "Gasto Administrativo",
+                "concepto": {
+                    "nombre": "Gasto Administrativo",
+                    "tipoConcepto": {
+                        "nombre": "General",
+                        "color": "Rojo"
+                    }
+                },
                 "descripcion": "Descricion de Gasto Administrativo",
                 "monto": 180.0
             },
             {
                 "conceptoNombre": "Gasto Mantenimiento",
+                "concepto": {
+                    "nombre": "Gasto Mantenimiento",
+                    "tipoConcepto": {
+                        "nombre": "General",
+                        "color": "Rojo"
+                    }
+                },
                 "descripcion": "Descricion de Gasto Mantenimiento",
                 "monto": 186.4
             }
@@ -352,11 +366,25 @@ Response
         "itemsGenerales": [
             {
                 "conceptoNombre": "Gasto Administrativo",
+                "concepto": {
+                    "nombre": "Gasto Administrativo",
+                    "tipoConcepto": {
+                        "nombre": "General",
+                        "color": "Rojo"
+                    }
+                },
                 "descripcion": "Descricion de Gasto Administrativo",
                 "monto": 180.0
             },
             {
                 "conceptoNombre": "Gasto Mantenimiento",
+                "concepto": {
+                    "nombre": "Gasto Mantenimiento",
+                    "tipoConcepto": {
+                        "nombre": "General",
+                        "color": "Rojo"
+                    }
+                },
                 "descripcion": "Descricion de Gasto Mantenimiento",
                 "monto": 186.4
             }
@@ -367,11 +395,25 @@ Response
         "itemsGenerales": [
             {
                 "conceptoNombre": "Gasto Administrativo",
+                "concepto": {
+                    "nombre": "Gasto Administrativo",
+                    "tipoConcepto": {
+                        "nombre": "General",
+                        "color": "Rojo"
+                    }
+                },
                 "descripcion": "Descricion de Gasto Administrativo",
                 "monto": 294.0
             },
             {
                 "conceptoNombre": "Gasto Mantenimiento",
+                "concepto": {
+                    "nombre": "Gasto Mantenimiento",
+                    "tipoConcepto": {
+                        "nombre": "General",
+                        "color": "Rojo"
+                    }
+                },
                 "descripcion": "Descricion de Gasto Mantenimiento",
                 "monto": 2523.43
             }

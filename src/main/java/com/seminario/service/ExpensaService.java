@@ -71,8 +71,7 @@ public class ExpensaService {
             List<ItemExpensaDTO> conceptos = expensaGeneralCurrentMonth.getItems().stream().map(itemExpensaGeneral -> {
                 BigDecimal montoConcepto = BigDecimal.valueOf(itemExpensaGeneral.getMonto());
                 BigDecimal prorrateo = BigDecimal.valueOf(unidadFuncional.getProrrateo());
-                String conceptoNombre = itemExpensaGeneral.getConcepto().getNombre();
-                return new ItemExpensaDTO(conceptoNombre, montoConcepto.multiply(prorrateo).doubleValue());
+                return new ItemExpensaDTO(itemExpensaGeneral.getConcepto(), montoConcepto.multiply(prorrateo).doubleValue());
             }).collect(Collectors.toList());
             return new ExpensaUnidadFuncionalDTO(unidadFuncional.getCodigoDepartamento(), conceptos);
         }).collect(Collectors.toList());
